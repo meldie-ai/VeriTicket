@@ -1,0 +1,23 @@
+node_modules/
+artifacts/
+cache/
+coverage/
+coverage.json
+typechain/
+typechain-types/
+
+# Environment
+.env
+.env.local
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Hardhat / ignition
+ignition/deployments/
+
+# Build artifacts we don't want committed
+*.tsbuildinfo

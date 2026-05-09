@@ -1,0 +1,22 @@
+{
+  "name": "veriticket",
+  "version": "1.0.0",
+  "description": "VeriTicket — blockchain-based event ticketing on Ethereum/Polygon. IFB452 Blockchain Technology project.",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "coverage": "hardhat coverage",
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "demo": "hardhat run scripts/demo.js"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.22.0",
+    "solc": "^0.8.28"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2"
+  }
+}
