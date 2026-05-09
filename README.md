@@ -1,6 +1,6 @@
 # VeriTicket
 
-NFT ticketing for live events. Built for IFB452 Blockchain Technology, Semester 1 2026.
+VeriTicket is a blockchain-based ticketing app that solves two long-standing problems in the live events industry: fake tickets and scalping.
 
 The idea: tickets become NFTs that cannot be duplicated, the resale price is capped on-chain so scalpers cannot triple-price them, and at the door each ticket is redeemed with a one-time signature from the buyer's wallet, so a screenshotted QR code is useless.
 
@@ -47,6 +47,6 @@ docs/        bpmn diagrams, architecture diagram, slides
 
 ## Author
 
-Minsel Choirog,N12193046
+Minsel Choirog, N12193046
 Jayden Manton, N10475176
-IFB452 Assessment 3a, May 2026.
+2026
