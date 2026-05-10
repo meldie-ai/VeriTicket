@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 720" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="seqArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2c2c2c"/>
+    </marker>
+    <marker id="msgArrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="13" markerHeight="13" orient="auto">
+      <path d="M1,1 L11,6 L1,11 z" fill="#ffffff" stroke="#1565c0" stroke-width="1.4"/>
+    </marker>
+    <marker id="msgStart" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+      <circle cx="4" cy="4" r="3" fill="#ffffff" stroke="#1565c0" stroke-width="1.4"/>
+    </marker>
+  </defs>
+
+  <style>
+    .poolLabel { font-weight: 700; font-size: 12px; fill: #1f3a5f; }
+    .laneLabel { font-weight: 600; font-size: 11px; fill: #1f3a5f; }
+    .poolBg    { fill: #fbfcfe; stroke: #1f3a5f; stroke-width: 1.5; }
+    .laneBar   { fill: #e8eef9; stroke: #1f3a5f; stroke-width: 1.2; }
+    .task      { fill: #ffffff; stroke: #2c2c2c; stroke-width: 1.4; }
+    .service   { fill: #e3f2fd; stroke: #1565c0; stroke-width: 1.4; }
+    .taskText  { font-size: 10.5px; fill: #1d1d1d; }
+    .seqFlow   { fill: none; stroke: #2c2c2c; stroke-width: 1.4; }
+    .msgFlow   { fill: none; stroke: #1565c0; stroke-width: 1.2; stroke-dasharray: 5 3; }
+    .gw        { fill: #fffde7; stroke: #b58a00; stroke-width: 1.5; }
+    .ev        { fill: #ffffff; stroke: #2c2c2c; stroke-width: 1.6; }
+    .evEnd     { fill: #ffffff; stroke: #2c2c2c; stroke-width: 3; }
+    .msgLabel  { font-size: 9.5px; fill: #1565c0; font-style: italic; }
+  </style>
+
+  <!-- Pool 1: Event Organiser -->
+  <rect class="poolBg" x="30" y="20" width="1440" height="80"/>
+  <rect class="laneBar" x="30" y="20" width="30" height="80"/>
+  <text class="poolLabel" x="48" y="65" transform="rotate(-90 48 65)" text-anchor="middle">Event Organiser</text>
+
+  <circle class="ev" cx="80" cy="60" r="12"/>
+  <rect class="task" x="105" y="42" width="120" height="36" rx="6"/>
+  <text class="taskText" x="165" y="58" text-anchor="middle">Apply for</text>
+  <text class="taskText" x="165" y="70" text-anchor="middle">organiser role</text>
+
+  <rect class="task" x="245" y="42" width="120" height="36" rx="6"/>
+  <text class="taskText" x="305" y="58" text-anchor="middle">Receive approval</text>
+  <text class="taskText" x="305" y="70" text-anchor="middle">from admin</text>
+
+  <rect class="task" x="385" y="42" width="120" height="36" rx="6"/>
+  <text class="taskText" x="445" y="58" text-anchor="middle">Configure event:</text>
+  <text class="taskText" x="445" y="70" text-anchor="middle">cap, supply, limit</text>
+
+  <rect class="task" x="525" y="42" width="120" height="36" rx="6"/>
+  <text class="taskText" x="585" y="62" text-anchor="middle">createEvent()</text>
+
+  <rect class="task" x="665" y="42" width="120" height="36" rx="6"/>
+  <text class="taskText" x="725" y="62" text-anchor="middle">mintTicket() to buyer</text>
+
+  <rect class="task" x="805" y="42" width="120" height="36" rx="6"/>
+  <text class="taskText" x="865" y="58" text-anchor="middle">Run sale &amp;</text>
+  <text class="taskText" x="865" y="70" text-anchor="middle">monitor demand</text>
+
+  <circle class="evEnd" cx="965" cy="60" r="12"/>
+
+  <path class="seqFlow" d="M 92 60 L 105 60" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 225 60 L 245 60" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 365 60 L 385 60" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 505 60 L 525 60" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 645 60 L 665 60" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 785 60 L 805 60" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 925 60 L 953 60" marker-end="url(#seqArrow)"/>
+
+  <!-- Pool 2: Buyer A -->
+  <rect class="poolBg" x="30" y="120" width="1440" height="110"/>
+  <rect class="laneBar" x="30" y="120" width="30" height="110"/>
+  <text class="poolLabel" x="48" y="175" transform="rotate(-90 48 175)" text-anchor="middle">Attendee (Buyer A)</text>
+
+  <circle class="ev" cx="80" cy="175" r="12"/>
+  <rect class="task" x="105" y="157" width="120" height="36" rx="6"/>
+  <text class="taskText" x="165" y="173" text-anchor="middle">Browse events,</text>
+  <text class="taskText" x="165" y="185" text-anchor="middle">buy from organiser</text>
+
+  <rect class="task" x="665" y="157" width="120" height="36" rx="6"/>
+  <text class="taskText" x="725" y="173" text-anchor="middle">Receive ticket NFT</text>
+  <text class="taskText" x="725" y="185" text-anchor="middle">in wallet</text>
+
+  <polygon class="gw" points="825,175 850,150 875,175 850,200"/>
+  <text class="taskText" x="850" y="178" text-anchor="middle">resell?</text>
+
+  <rect class="task" x="900" y="140" width="120" height="36" rx="6"/>
+  <text class="taskText" x="960" y="156" text-anchor="middle">approve(market,</text>
+  <text class="taskText" x="960" y="168" text-anchor="middle">ticketId)</text>
+
+  <rect class="task" x="1040" y="140" width="120" height="36" rx="6"/>
+  <text class="taskText" x="1100" y="156" text-anchor="middle">listTicket(price)</text>
+  <text class="taskText" x="1100" y="168" text-anchor="middle">below cap</text>
+
+  <rect class="task" x="1180" y="140" width="120" height="36" rx="6"/>
+  <text class="taskText" x="1240" y="156" text-anchor="middle">Receive USDC</text>
+  <text class="taskText" x="1240" y="168" text-anchor="middle">from buyer B</text>
+
+  <circle class="evEnd" cx="1340" cy="158" r="12"/>
+
+  <rect class="task" x="900" y="190" width="120" height="36" rx="6"/>
+  <text class="taskText" x="960" y="206" text-anchor="middle">Travel to venue</text>
+  <text class="taskText" x="960" y="218" text-anchor="middle">(see Buyer B path)</text>
+  <circle class="evEnd" cx="1040" cy="208" r="12"/>
+
+  <path class="seqFlow" d="M 92 175 L 105 175" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 225 175 L 665 175" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 785 175 L 825 175" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 875 175 L 900 158" marker-end="url(#seqArrow)"/>
+  <text class="taskText" x="888" y="150" font-size="9">yes</text>
+  <path class="seqFlow" d="M 850 200 L 850 208 L 900 208" marker-end="url(#seqArrow)"/>
+  <text class="taskText" x="855" y="220" font-size="9">no</text>
+  <path class="seqFlow" d="M 1020 158 L 1040 158" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 1160 158 L 1180 158" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 1300 158 L 1328 158" marker-end="url(#seqArrow)"/>
+
+  <!-- Pool 3: Buyer B -->
+  <rect class="poolBg" x="30" y="250" width="1440" height="100"/>
+  <rect class="laneBar" x="30" y="250" width="30" height="100"/>
+  <text class="poolLabel" x="48" y="300" transform="rotate(-90 48 300)" text-anchor="middle">Reseller (Buyer B)</text>
+
+  <circle class="ev" cx="80" cy="300" r="12"/>
+  <rect class="task" x="105" y="282" width="120" height="36" rx="6"/>
+  <text class="taskText" x="165" y="298" text-anchor="middle">Browse listings,</text>
+  <text class="taskText" x="165" y="310" text-anchor="middle">verify on-chain</text>
+
+  <rect class="task" x="245" y="282" width="120" height="36" rx="6"/>
+  <text class="taskText" x="305" y="298" text-anchor="middle">Top up USDC</text>
+  <text class="taskText" x="305" y="310" text-anchor="middle">via fiat ramp</text>
+
+  <rect class="task" x="385" y="282" width="120" height="36" rx="6"/>
+  <text class="taskText" x="445" y="298" text-anchor="middle">USDC.approve()</text>
+  <text class="taskText" x="445" y="310" text-anchor="middle">marketplace</text>
+
+  <rect class="task" x="1180" y="282" width="120" height="36" rx="6"/>
+  <text class="taskText" x="1240" y="304" text-anchor="middle">purchaseTicket()</text>
+
+  <rect class="task" x="1320" y="282" width="120" height="36" rx="6"/>
+  <text class="taskText" x="1380" y="298" text-anchor="middle">Travel to venue;</text>
+  <text class="taskText" x="1380" y="310" text-anchor="middle">show app at door</text>
+
+  <path class="seqFlow" d="M 92 300 L 105 300" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 225 300 L 245 300" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 365 300 L 385 300" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 505 300 L 1180 300" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 1300 300 L 1320 300" marker-end="url(#seqArrow)"/>
+
+  <!-- Pool 4: Venue Staff -->
+  <rect class="poolBg" x="30" y="370" width="1440" height="80"/>
+  <rect class="laneBar" x="30" y="370" width="30" height="80"/>
+  <text class="poolLabel" x="48" y="415" transform="rotate(-90 48 415)" text-anchor="middle">Venue Staff</text>
+
+  <circle class="ev" cx="1140" cy="410" r="12"/>
+  <rect class="task" x="1165" y="392" width="120" height="36" rx="6"/>
+  <text class="taskText" x="1225" y="408" text-anchor="middle">Generate nonce;</text>
+  <text class="taskText" x="1225" y="420" text-anchor="middle">show to buyer</text>
+
+  <rect class="task" x="1305" y="392" width="60" height="36" rx="6"/>
+  <text class="taskText" x="1335" y="414" text-anchor="middle">Receive sig</text>
+
+  <rect class="task" x="1385" y="392" width="60" height="36" rx="6"/>
+  <text class="taskText" x="1415" y="408" text-anchor="middle">redeem</text>
+  <text class="taskText" x="1415" y="420" text-anchor="middle">Ticket()</text>
+
+  <circle class="evEnd" cx="1465" cy="410" r="12"/>
+
+  <path class="seqFlow" d="M 1152 410 L 1165 410" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 1285 410 L 1305 410" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 1365 410 L 1385 410" marker-end="url(#seqArrow)"/>
+  <path class="seqFlow" d="M 1445 410 L 1453 410" marker-end="url(#seqArrow)"/>
+
+  <!-- Pool 5: Smart Contracts (two lanes) -->
+  <rect class="poolBg" x="30" y="470" width="1440" height="220"/>
+  <rect class="laneBar" x="30" y="470" width="30" height="220"/>
+  <text class="poolLabel" x="48" y="580" transform="rotate(-90 48 580)" text-anchor="middle">Smart Contracts</text>
+
+  <rect class="laneBar" x="60" y="470" width="20" height="110"/>
+  <text class="laneLabel" x="70" y="525" transform="rotate(-90 70 525)" text-anchor="middle">TicketContract</text>
+  <line x1="80" y1="580" x2="1470" y2="580" stroke="#1f3a5f" stroke-width="1.0"/>
+
+  <rect class="service" x="525" y="490" width="120" height="36" rx="6"/>
+  <text class="taskText" x="585" y="506" text-anchor="middle">Create event;</text>
+  <text class="taskText" x="585" y="518" text-anchor="middle">store cap, limits</text>
+
+  <rect class="service" x="665" y="490" width="120" height="36" rx="6"/>
+  <text class="taskText" x="725" y="506" text-anchor="middle">Mint NFT;</text>
+  <text class="taskText" x="725" y="518" text-anchor="middle">enforce per-wallet cap</text>
+
+  <rect class="service" x="900" y="535" width="120" height="36" rx="6"/>
+  <text class="taskText" x="960" y="551" text-anchor="middle">Record approval;</text>
+  <text class="taskText" x="960" y="563" text-anchor="middle">market may transfer</text>
+
+  <rect class="service" x="1385" y="490" width="80" height="36" rx="6"/>
+  <text class="taskText" x="1425" y="506" text-anchor="middle">Verify sig;</text>
+  <text class="taskText" x="1425" y="518" text-anchor="middle">flag redeemed</text>
+
+  <rect class="laneBar" x="60" y="580" width="20" height="110"/>
+  <text class="laneLabel" x="70" y="635" transform="rotate(-90 70 635)" text-anchor="middle">TransferContract</text>
+
+  <rect class="service" x="385" y="600" width="120" height="36" rx="6"/>
+  <text class="taskText" x="445" y="616" text-anchor="middle">Record buyer's</text>
+  <text class="taskText" x="445" y="628" text-anchor="middle">USDC allowance</text>
+
+  <rect class="service" x="1040" y="600" width="120" height="36" rx="6"/>
+  <text class="taskText" x="1100" y="616" text-anchor="middle">Validate cap and</text>
+  <text class="taskText" x="1100" y="628" text-anchor="middle">create listing</text>
+
+  <rect class="service" x="1180" y="640" width="120" height="36" rx="6"/>
+  <text class="taskText" x="1240" y="656" text-anchor="middle">Atomic settle:</text>
+  <text class="taskText" x="1240" y="668" text-anchor="middle">USDC + NFT swap</text>
+
+  <!-- Cross-contract sequence flow inside pool -->
+  <path class="seqFlow" d="M 1240 640 L 1240 620 L 1380 620 L 1380 530 L 1385 508" marker-end="url(#seqArrow)" stroke="#c62828"/>
+
+  <!-- Message flows -->
+  <path class="msgFlow" d="M 585 78 L 585 490" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+  <text class="msgLabel" x="595" y="190">createEvent</text>
+
+  <path class="msgFlow" d="M 725 78 L 725 490" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+  <text class="msgLabel" x="735" y="210">mintTicket</text>
+
+  <path class="msgFlow" d="M 750 490 L 750 193" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+  <text class="msgLabel" x="760" y="270">NFT delivery</text>
+
+  <path class="msgFlow" d="M 960 176 L 960 535" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+  <text class="msgLabel" x="965" y="340">approve(market, ticketId)</text>
+
+  <path class="msgFlow" d="M 1100 176 L 1100 600" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+  <text class="msgLabel" x="1105" y="360">listTicket</text>
+
+  <path class="msgFlow" d="M 445 318 L 445 600" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+  <text class="msgLabel" x="450" y="460">USDC.approve(market)</text>
+
+  <path class="msgFlow" d="M 1240 318 L 1240 640" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+  <text class="msgLabel" x="1245" y="460">purchaseTicket</text>
+
+  <path class="msgFlow" d="M 1230 640 L 1230 300 L 1240 176" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+
+  <path class="msgFlow" d="M 1225 392 L 1225 358 L 1380 358 L 1380 318" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+  <text class="msgLabel" x="1230" y="375">show nonce</text>
+
+  <path class="msgFlow" d="M 1380 318 L 1380 368 L 1335 368 L 1335 392" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+  <text class="msgLabel" x="1340" y="385">signed digest</text>
+
+  <path class="msgFlow" d="M 1415 428 L 1415 490" marker-start="url(#msgStart)" marker-end="url(#msgArrow)"/>
+  <text class="msgLabel" x="1265" y="478">redeemTicket</text>
+</svg>
