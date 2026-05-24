@@ -24,7 +24,7 @@ contract TicketContract is ERC721, AccessControl, Pausable {
         uint64 eventDate;
         uint32 ticketSupply;
         uint32 ticketsMinted;
-        uint256 primaryPrice;    // USDC, 6 decimals (informational)
+        uint256 primaryPrice;    // USDC, 6 decimals
         uint256 maxResalePrice;  // USDC, 6 decimals, enforced by TransferContract
         uint16 perWalletLimit;   // 0 = unlimited
         bool exists;
