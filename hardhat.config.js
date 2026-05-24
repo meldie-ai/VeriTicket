@@ -18,7 +18,7 @@ module.exports = {
     polygonAmoy: { url: process.env.POLYGON_AMOY_RPC_URL || "", accounts: process.env.DEPLOYER_PK ? [process.env.DEPLOYER_PK] : [] },
     polygon: { url: process.env.POLYGON_RPC_URL || "", accounts: process.env.DEPLOYER_PK ? [process.env.DEPLOYER_PK] : [] },
   },
-  etherscan: { apiKey: "RFRXJZ1C8K873TZ86X2F5I4K3HEBSRCI2S" },
+  etherscan: { apiKey: process.env.POLYGONSCAN_API_KEY || "" },
   paths: { sources: "./contracts", tests: "./test", cache: "./cache", artifacts: "./artifacts" },
   mocha: { timeout: 60000 },
 };
