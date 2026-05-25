@@ -1074,6 +1074,18 @@ class App extends React.Component {
         <nav className="navbar navbar-expand-lg vt-navbar">
           <div className="container-fluid">
             <span className="navbar-brand">Veri<span>Ticket</span></span>
+
+            {/* Wallet connect always visible on mobile (outside collapse) */}
+            <div className="d-flex d-lg-none align-items-center gap-2 ms-auto me-2">
+              {account ? (
+                <span className="wallet-badge">🟢 {short(account)}</span>
+              ) : (
+                <button className="btn connect-btn" onClick={this.connectMetaMask}>
+                  Connect
+                </button>
+              )}
+            </div>
+
             <button className="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#navMenu"
               style={{ borderColor: 'rgba(255,255,255,0.3)' }}>
@@ -1101,7 +1113,8 @@ class App extends React.Component {
                   </li>
                 )}
               </ul>
-              <div className="d-flex align-items-center gap-2">
+              {/* Full wallet section for desktop */}
+              <div className="d-none d-lg-flex align-items-center gap-2">
                 {account && isAdmin     && <span className="role-indicator admin">Admin</span>}
                 {account && isOrganizer && !isAdmin && <span className="role-indicator organizer">Organizer</span>}
                 {rolesLoading && <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem' }}>Checking roles…</span>}
