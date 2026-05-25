@@ -1,36 +1,308 @@
-.App {
-  text-align: center;
+/* ── Global ── */
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #f0f2f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ── Navbar ── */
+.vt-navbar {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%) !important;
+  padding: 0.9rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.vt-navbar .navbar-brand {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e94560 !important;
+  letter-spacing: 0.5px;
+}
+
+.vt-navbar .navbar-brand span {
+  color: #ffffff;
+}
+
+.vt-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  margin: 0 2px;
+}
+
+.vt-navbar .nav-link:hover,
+.vt-navbar .nav-link.active {
+  color: #ffffff !important;
+  background: rgba(233, 69, 96, 0.2);
+}
+
+.wallet-badge {
+  background: rgba(233, 69, 96, 0.15);
+  border: 1px solid rgba(233, 69, 96, 0.4);
+  color: #e94560;
+  font-size: 0.78rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.connect-btn {
+  background: #e94560 !important;
+  border: none !important;
+  border-radius: 20px !important;
+  font-size: 0.82rem !important;
+  padding: 0.35rem 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px;
+  transition: background 0.2s ease !important;
+}
+
+.connect-btn:hover {
+  background: #c73652 !important;
+}
+
+/* ── Page wrapper ── */
+.page-wrapper {
+  padding: 2rem 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Page header ── */
+.page-header {
+  margin-bottom: 1.8rem;
+}
+
+.page-header h1 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.3rem;
+}
+
+.page-header p {
+  color: #6c757d;
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ── Role badge ── */
+.role-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+}
+
+.role-badge.admin    { background: #ffe0e6; color: #c0392b; }
+.role-badge.organizer { background: #e0eaff; color: #2c5282; }
+.role-badge.customer { background: #e0f7ec; color: #1a7f4b; }
+
+/* ── Cards ── */
+.vt-card {
+  background: #ffffff;
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  height: 100%;
+}
+
+.vt-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.11);
+  transform: translateY(-2px);
+}
+
+.vt-card .card-body {
+  padding: 1.5rem;
+}
+
+.vt-card .card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 1.1rem;
   display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.card-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.icon-red    { background: #ffe0e6; }
+.icon-blue   { background: #e0eaff; }
+.icon-green  { background: #e0f7ec; }
+.icon-purple { background: #ede0ff; }
+.icon-orange { background: #fff0e0; }
+
+/* ── Forms ── */
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
+
+.form-control,
+.form-select {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  padding: 0.55rem 0.85rem;
+  color: #1a1a2e;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: #fafbfc;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #e94560;
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.12);
+  background: #fff;
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: #b0bec5;
+  font-size: 0.87rem;
+}
+
+/* ── Buttons ── */
+.btn-vt-primary {
+  background: #e94560;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.btn-vt-primary:hover {
+  background: #c73652;
+  box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+  color: #fff;
+}
+
+.btn-vt-secondary {
+  background: #f0f2f5;
+  color: #4a5568;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.btn-vt-secondary:hover {
+  background: #e2e8f0;
+  color: #1a1a2e;
+}
+
+.btn-vt-danger {
+  background: #fff0f0;
+  color: #c0392b;
+  border: 1.5px solid #fdd;
+  border-radius: 8px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.btn-vt-danger:hover {
+  background: #ffe0e0;
+  color: #a93226;
+}
+
+.btn-vt-success {
+  background: #e0f7ec;
+  color: #1a7f4b;
+  border: 1.5px solid #c3e6d0;
+  border-radius: 8px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.btn-vt-success:hover {
+  background: #c3e6d0;
+  color: #145a35;
+}
+
+/* ── Pause toggle card ── */
+.pause-status {
+  text-align: center;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.pause-status.active {
+  background: #e0f7ec;
+  color: #1a7f4b;
+}
+
+.pause-status.paused {
+  background: #ffe0e0;
+  color: #c0392b;
+}
+
+.btn-group-equal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+/* ── Divider ── */
+.form-divider {
+  border: none;
+  border-top: 1.5px solid #f0f2f5;
+  margin: 1rem 0;
+}
+
+/* ── Toast / feedback ── */
+.vt-feedback {
+  margin-top: 0.8rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.83rem;
+  font-weight: 500;
+}
+
+.vt-feedback.info    { background: #e0eaff; color: #2c5282; }
+.vt-feedback.success { background: #e0f7ec; color: #1a7f4b; }
+.vt-feedback.error   { background: #ffe0e0; color: #c0392b; }
