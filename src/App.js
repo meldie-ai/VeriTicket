@@ -121,6 +121,11 @@ class App extends React.Component {
   connectMetaMask = async () => {
     if (!window.ethereum) { alert('MetaMask not detected.'); return; }
     try {
+      // Force MetaMask to show the account picker every time
+      await window.ethereum.request({
+        method: 'wallet_requestPermissions',
+        params: [{ eth_accounts: {} }],
+      });
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
       if (accounts.length > 0) {
         const account = accounts[0];
