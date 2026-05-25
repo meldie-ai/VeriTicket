@@ -294,6 +294,152 @@ body {
   margin: 1rem 0;
 }
 
+/* ── Section separator ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2.5rem 0 1.2rem;
+}
+
+.section-header h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.section-header p {
+  font-size: 0.82rem;
+  color: #6c757d;
+  margin: 0.15rem 0 0;
+}
+
+/* ── Data table ── */
+.vt-table-wrap {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+
+.vt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.vt-table thead tr {
+  background: #f8f9fb;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.vt-table thead th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6c757d;
+  white-space: nowrap;
+}
+
+.vt-table tbody tr {
+  border-bottom: 1px solid #f0f2f5;
+  transition: background 0.15s ease;
+}
+
+.vt-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.vt-table tbody tr:hover {
+  background: #fafbff;
+}
+
+.vt-table td {
+  padding: 0.85rem 1rem;
+  color: #2d3748;
+  vertical-align: middle;
+}
+
+.vt-table .id-cell {
+  font-weight: 700;
+  color: #e94560;
+  font-size: 0.82rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #9ca3af;
+}
+
+.empty-state .empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ── Status pills ── */
+.pill {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pill-green  { background: #e0f7ec; color: #1a7f4b; }
+.pill-red    { background: #ffe0e0; color: #c0392b; }
+.pill-grey   { background: #f0f2f5; color: #6c757d; }
+.pill-blue   { background: #e0eaff; color: #2c5282; }
+
+/* ── Role indicator in navbar ── */
+.role-indicator {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+}
+
+.role-indicator.admin     { background: rgba(233,69,96,0.2);  color: #e94560; }
+.role-indicator.organizer { background: rgba(99,179,237,0.2); color: #63b3ed; }
+
+/* ── Refresh button ── */
+.btn-refresh {
+  background: transparent;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-refresh:hover {
+  background: #f0f2f5;
+  border-color: #cbd5e0;
+}
+
+.btn-refresh:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* ── Toast / feedback ── */
 .vt-feedback {
   margin-top: 0.8rem;
