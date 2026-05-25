@@ -758,7 +758,7 @@ class App extends React.Component {
   renderOrganizer() {
     const {
       eventName, eventDate, ticketSupply, perWalletLimit, primaryPrice, maxResalePrice,
-      mintEventId, mintRecipient, loading, allEvents, account, roles,
+      mintEventId, mintRecipient, loading, allEvents, account,
     } = this.state;
 
     // Show only events created by this organizer
