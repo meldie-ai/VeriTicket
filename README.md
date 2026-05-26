@@ -6,13 +6,13 @@ The idea: tickets become NFTs that cannot be duplicated, the resale price is cap
 
 ## Stack
 
-Solidity 0.8.28, Hardhat, OpenZeppelin Contracts v5, deployable to Polygon Amoy.
+Solidity 0.8.28, Hardhat, OpenZeppelin Contracts v5, deployed to Polygon Amoy.
 
 ## Contracts
 
 - `TicketContract.sol` is the NFT itself. Handles event creation, minting, and redemption.
 - `TransferContract.sol` is the resale marketplace. Reads the cap from `TicketContract` and swaps USDC and the NFT in one transaction.
-- `MockUSDC.sol` is a 6-decimal ERC-20 used only in tests. The real Polygon USDC address replaces it on deployment.
+- `MockUSDC.sol` is a 6-decimal ERC-20 used for development.
 
 ## Run it
 
@@ -43,6 +43,7 @@ contracts/   solidity contracts
 test/        hardhat tests (43 cases)
 scripts/     deploy + demo scripts
 docs/        bpmn diagrams, architecture diagram, slides
+src/         front end ui for contracts
 ```
 
 ## Front End
@@ -52,6 +53,7 @@ npm install
 npm start
 
 ```
+The project lives on [https://veri-ticket.vercel.app](https://veri-ticket.vercel.app)
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
