@@ -215,18 +215,20 @@ class App extends React.Component {
   fetchAllEvents = async () => {
     this.setState({ eventsLoading: true });
     try {
-      const logs = await TicketContract.getPastEvents('EventCreated', {
-        fromBlock: 0, toBlock: 'latest',
-      });
+      // Use nextEventId counter instead of getPastEvents — avoids public RPC block-range limits
+      const nextId = await TicketContract.methods.nextEventId().call();
+      const ids = Array.from({ length: Number(nextId) - 1 }, (_, i) => i + 1);
       const events = await Promise.all(
-        logs.map(async (log) => {
-          const eventId = log.returnValues.eventId;
+        ids.map(async (eventId) => {
           const details = await TicketContract.methods.getEventDetails(eventId).call();
           return { eventId, ...details };
         })
       );
       this.setState({ allEvents: events });
-    } catch (err) { console.error('Fetch events failed:', err); }
+    } catch (err) {
+      console.error('Fetch events failed:', err);
+      this.setState({ allEvents: [] });
+    }
     this.setState({ eventsLoading: false });
   };
 
@@ -235,13 +237,13 @@ class App extends React.Component {
     if (!addr) return;
     this.setState({ ticketsLoading: true });
     try {
-      const logs = await TicketContract.getPastEvents('TicketMinted', {
-        fromBlock: 0, toBlock: 'latest',
-      });
+      // Use nextTicketId counter instead of getPastEvents — avoids public RPC block-range limits
+      const nextId = await TicketContract.methods.nextTicketId().call();
+      const ids = Array.from({ length: Number(nextId) - 1 }, (_, i) => i + 1);
       const details = await Promise.all(
-        logs.map((log) =>
-          TicketContract.methods.getTicketDetails(log.returnValues.ticketId).call()
-            .then((d) => ({ ticketId: log.returnValues.ticketId, ...d }))
+        ids.map((ticketId) =>
+          TicketContract.methods.getTicketDetails(ticketId).call()
+            .then((d) => ({ ticketId, ...d }))
             .catch(() => null)
         )
       );
@@ -249,7 +251,10 @@ class App extends React.Component {
         (d) => d && d.ticketOwner?.toLowerCase() === addr.toLowerCase()
       );
       this.setState({ myTickets: mine });
-    } catch (err) { console.error('Fetch tickets failed:', err); }
+    } catch (err) {
+      console.error('Fetch tickets failed:', err);
+      this.setState({ myTickets: [] });
+    }
     this.setState({ ticketsLoading: false });
   };
 
