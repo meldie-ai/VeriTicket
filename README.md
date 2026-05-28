@@ -63,6 +63,7 @@ You may also see any lint errors in the console.
 
 ## Author
 
-Minsel Choirog, N12193046
-Jayden Manton, N10475176
+Minsel Choirog, N12193046 (Completed 60% of project)
+
+Jayden Manton, N10475176 (Completed 40% of project)
 2026
