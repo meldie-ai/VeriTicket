@@ -52,6 +52,7 @@ class App extends React.Component {
     // ── Admin form state ──────────────────────────────
     addOrgAddr: '', removeOrgAddr: '',
     addStaffAddr: '', removeStaffAddr: '',
+    grantAdminAddr: '',
     tcPaused: false, trPaused: false,
 
     // ── Shared ────────────────────────────────────────
@@ -519,6 +520,21 @@ class App extends React.Component {
     } catch (err) { this.setFeedback('removeStaff', 'error', `❌ ${err.message}`); }
   };
 
+  onGrantAdmin = async (e) => {
+    e.preventDefault();
+    if (!this.requireAccount()) return;
+    const { account, grantAdminAddr } = this.state;
+    if (!grantAdminAddr) return this.setFeedback('grantAdmin', 'error', 'Enter a wallet address.');
+    this.setFeedback('grantAdmin', 'info', 'Granting admin role… (2 MetaMask popups)');
+    try {
+      const DEFAULT_ADMIN_ROLE = '0x0000000000000000000000000000000000000000000000000000000000000000';
+      await TicketContract.methods.grantRole(DEFAULT_ADMIN_ROLE, grantAdminAddr).send({ from: account });
+      await TransferContract.methods.transferOwnership(grantAdminAddr).send({ from: account });
+      this.setFeedback('grantAdmin', 'success', `✅ Admin role granted to ${short(grantAdminAddr)}. They now control both contracts.`);
+      this.setState({ grantAdminAddr: '' });
+    } catch (err) { this.setFeedback('grantAdmin', 'error', `❌ ${err.message}`); }
+  };
+
   // ════════════════════════════════════════════════════════════════════════════
   // SHARED UI HELPERS
   // ════════════════════════════════════════════════════════════════════════════
@@ -639,7 +655,7 @@ class App extends React.Component {
   // ════════════════════════════════════════════════════════════════════════════
 
   renderAdmin() {
-    const { tcPaused, trPaused, addOrgAddr, removeOrgAddr, addStaffAddr, removeStaffAddr } = this.state;
+    const { tcPaused, trPaused, addOrgAddr, removeOrgAddr, addStaffAddr, removeStaffAddr, grantAdminAddr } = this.state;
     return (
       <div className="page-wrapper">
         <div className="page-header">
@@ -757,6 +773,27 @@ class App extends React.Component {
                   <button type="submit" className="btn-vt-danger">Revoke Staff Role</button>
                 </form>
                 {this.renderFeedback('removeStaff')}
+              </div>
+            </div>
+          </div>
+
+          {/* Grant Admin Role */}
+          <div className="col-12 col-md-6 col-lg-4">
+            <div className="vt-card card" style={{ border: '2px solid #dc3545' }}>
+              <div className="card-body">
+                <h5 className="card-title"><span className="card-icon icon-red">👑</span>Grant Admin Role</h5>
+                <p style={{ fontSize: '0.82rem', color: '#6c757d', marginBottom: '1rem' }}>
+                  Grants DEFAULT_ADMIN_ROLE on TicketContract and transfers ownership of TransferContract. Two MetaMask confirmations required.
+                </p>
+                <form onSubmit={this.onGrantAdmin}>
+                  <div className="mb-3">
+                    <label className="form-label">New Admin Wallet Address</label>
+                    <input type="text" className="form-control" placeholder="0x..."
+                      value={grantAdminAddr} onChange={(e) => this.setState({ grantAdminAddr: e.target.value })} />
+                  </div>
+                  <button type="submit" className="btn-vt-danger">Grant Admin Role</button>
+                </form>
+                {this.renderFeedback('grantAdmin')}
               </div>
             </div>
           </div>
