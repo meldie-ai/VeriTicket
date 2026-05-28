@@ -51,9 +51,11 @@ contract TransferContract is Ownable, Pausable, ReentrancyGuard {
         paymentToken = IERC20(paymentTokenAddress);
     }
 
+    // Pause and unpase the contract ADMIN ONLY
     function pause() external onlyOwner { _pause(); }
     function unpause() external onlyOwner { _unpause(); }
 
+    // List owned ticket for resale with max price dictated by maxResalePriceFor
     function listTicket(uint256 ticketId, uint256 price) external whenNotPaused {
         if (ticketContract.ownerOf(ticketId) != msg.sender) revert NotTicketOwner();
         if (price == 0) revert PriceMustBePositive();
@@ -75,6 +77,7 @@ contract TransferContract is Ownable, Pausable, ReentrancyGuard {
         emit TicketListed(ticketId, msg.sender, price);
     }
 
+    // Cancel active listing of owned ticket
     function cancelListing(uint256 ticketId) external {
         Listing storage l = _listings[ticketId];
         if (!l.active) revert NoActiveListing(ticketId);
