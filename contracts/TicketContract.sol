@@ -76,21 +76,25 @@ contract TicketContract is ERC721, AccessControl, Pausable {
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
     }
 
+    // Grant a wallet address the organizer role ADMIN ONLY
     function approveOrganizer(address organizer) external onlyRole(DEFAULT_ADMIN_ROLE) {
         _grantRole(ORGANIZER_ROLE, organizer);
         emit OrganizerApproved(organizer);
     }
 
+    // Revoke organizer privileges from wallet ADMIN ONLY
     function revokeOrganizer(address organizer) external onlyRole(DEFAULT_ADMIN_ROLE) {
         _revokeRole(ORGANIZER_ROLE, organizer);
         emit OrganizerRevoked(organizer);
     }
 
+    // Grant a wallet address the staff role ADMIN ONLY
     function addStaff(address staff) external onlyRole(DEFAULT_ADMIN_ROLE) {
         _grantRole(STAFF_ROLE, staff);
         emit StaffAdded(staff);
     }
 
+    // Revoke staff privileges from wallet ADMIN ONLY
     function removeStaff(address staff) external onlyRole(DEFAULT_ADMIN_ROLE) {
         _revokeRole(STAFF_ROLE, staff);
         emit StaffRemoved(staff);
@@ -101,9 +105,11 @@ contract TicketContract is ERC721, AccessControl, Pausable {
         transferContract = newTransferContract;
     }
 
+    // Pause and unpase the contract ADMIN ONLY
     function pause() external onlyRole(DEFAULT_ADMIN_ROLE) { _pause(); }
     function unpause() external onlyRole(DEFAULT_ADMIN_ROLE) { _unpause(); }
 
+    // Create an event with an event name, date, total number of tickets, primary price, max resale price and max tickets per wallet ORGANIZER ONLY
     function createEvent(
         string calldata name,
         uint64 eventDate,
@@ -169,6 +175,7 @@ contract TicketContract is ERC721, AccessControl, Pausable {
         );
     }
 
+    // Used by staff role at door of event to verify and redeem tickets 
     function redeemTicket(uint256 ticketId, bytes32 nonce, bytes calldata signature)
         external
         whenNotPaused
@@ -193,21 +200,25 @@ contract TicketContract is ERC721, AccessControl, Pausable {
         emit TicketRedeemed(ticketId, msg.sender, currentOwner);
     }
 
+    // Returns max resale price for specified ticket
     function maxResalePriceFor(uint256 ticketId) external view returns (uint256) {
         Ticket storage t = _tickets[ticketId];
         if (t.eventId == 0) revert TicketDoesNotExist(ticketId);
         return _events[t.eventId].maxResalePrice;
     }
 
+    // Returns if ticket has been redeemed
     function isRedeemed(uint256 ticketId) external view returns (bool) {
         return _tickets[ticketId].redeemed;
     }
 
+    // Returns specified event details given a event ID
     function getEventDetails(uint256 eventId) external view returns (Event memory) {
         if (!_events[eventId].exists) revert EventDoesNotExist(eventId);
         return _events[eventId];
     }
 
+    // Returns specified ticket details given a ticket ID
     function getTicketDetails(uint256 ticketId) external view returns (
         uint256 eventId,
         address ticketOwner,
