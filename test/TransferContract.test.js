@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 /**
- * Tests for TransferContract — VeriTicket's resale marketplace.
+ * Tests for TransferContract - VeriTicket's resale marketplace.
  */
 describe("TransferContract", function () {
   async function deployFixture() {
