@@ -16,11 +16,11 @@ Solidity 0.8.28, Hardhat, OpenZeppelin Contracts v5, deployed to Polygon Amoy.
 
 ## Deployed contracts (Polygon Amoy testnet)
 
-| Contract         | Address                                      |
-|------------------|----------------------------------------------|
-| TicketContract   | `0x16222a6dd924FB26C420708984E66De9A021512B` |
-| TransferContract | `0xcD9AE872B54022b31185A7Dfd2598115926b18d2` |
-| MockUSDC         | `0x6aC7a97bDA650aC1661831c3C2d59C5BC84A86FC` |
+Contract:          Address                                     
+
+TicketContract:   `0x16222a6dd924FB26C420708984E66De9A021512B`
+TransferContract: `0xcD9AE872B54022b31185A7Dfd2598115926b18d2`
+MockUSDC:         `0x6aC7a97bDA650aC1661831c3C2d59C5BC84A86FC`
 
 ## Layout
 
@@ -93,7 +93,7 @@ npx hardhat test --grep "resale cap"
 npx hardhat run scripts/demo.js
 ```
 
-Runs through the whole flow — create event, mint ticket, list it, buy it, redeem it.
+Runs through the whole flow - create event, mint ticket, list it, buy it, redeem it.
 
 ---
 
@@ -109,13 +109,13 @@ Runs through the whole flow — create event, mint ticket, list it, buy it, rede
 
 Open MetaMask → Settings → Networks → Add a network manually:
 
-| Field            | Value                                  |
-|------------------|----------------------------------------|
-| Network name     | Polygon Amoy                           |
-| RPC URL          | `https://rpc-amoy.polygon.technology`  |
-| Chain ID         | `80002`                                |
-| Currency symbol  | `MATIC`                                |
-| Block explorer   | `https://amoy.polygonscan.com`         |
+Field            Value                                 
+
+Network name     Polygon Amoy               
+RPC URL          `https://rpc-amoy.polygon.technology`
+Chain ID         `80002`                             
+Currency symbol  `MATIC/POL`                            
+Block explorer   `https://amoy.polygonscan.com`       
 
 ### 2. Install and start the frontend
 
